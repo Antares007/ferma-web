@@ -11,6 +11,54 @@ router.get('/', function (req, res) {
 });
 
 function makeD3tree(dzrokhebi) {
+  var data = {
+    name: "adam+eva",
+    children: [
+      {
+      name: "x1",
+      children: [
+        {
+        name: "x1",
+        size: 4
+      },
+      {
+        name: "x1+f1",
+        children: [
+          {
+          name: "x2",
+          size: 0.1
+        },
+        {
+          name: "x3",
+          size: 3
+        }
+        ]
+      },
+      {
+        name: "x1+f2",
+        children: [
+          {
+          name: "x4",
+          size: 1
+        },
+        {
+          name: "f3",
+          size: 3
+        }
+        ]
+      }
+      ]
+    },
+    {
+      name: "ffff1",
+      size: 4
+    },
+    {
+      name: "f2",
+      size: 3
+    }
+    ]
+  };
 
-  return dzrokhebi;
+  return data;
 }
