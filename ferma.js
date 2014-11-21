@@ -18,9 +18,10 @@ function makeD3tree(dzrokhebi) {
   dzrokhebi = dzrokhebi.map(v => {
     return {
       name: v.skesi + '-' + v.n,
+      skesi: v.skesi,
       ojakhi: v.mama + ' da ' + v.deda,
       ojakhebi: v.skesi !== 'ფური' ? Object.keys(v.ojakhebi).map(key => v.n + ' da ' + key) : undefined,
-      size: Math.sqrt((Date.now() - new Date(v.dabDge)) / 1000 / 60 / 60 / 24)
+      size: Math.floor((Date.now() - new Date(v.dabDge)) / 1000 / 60 / 60 / 24)
     };
   });
   var ns = {};
