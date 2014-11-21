@@ -73,6 +73,17 @@ d3.json("ferma", function(data) {
       .attr("cy", function(d) { return d.y; })
       .attr("r", function(d) { return d.r; })
       .on("click", function(d) { return zoom(node == d ? root : d); });
+  vis.selectAll("image")
+      .data(nodes)
+    .enter().append("svg:image")
+      .attr("xlink:href", "/cow.png")
+      .attr("class", function(d) { return d.children ? "parenti" : "childi"; })
+      .attr("visibility", function(d) { return d.children ? "hidden" : "visible"; })
+      .attr("x", function(d) { return d.x-d.r; })
+      .attr("y", function(d) { console.log(d);return d.y-d.r; })
+      .attr("height", function(d) { return d.r*2; })
+      .attr("width", function(d) { return d.r*2; })
+      .on("click", function(d) { return zoom(node == d ? root : d); });
 
   vis.selectAll("text")
       .data(nodes)
@@ -100,6 +111,12 @@ function zoom(d, i) {
       .attr("cx", function(d) { return x(d.x); })
       .attr("cy", function(d) { return y(d.y); })
       .attr("r", function(d) { return k * d.r; });
+
+  t.selectAll("image")
+      .attr("x", function(d) { return x(d.x - d.r); })
+      .attr("y", function(d) { return y(d.y - d.r); })
+      .attr("height", function(d) { return k * d.r * 2; })
+      .attr("width", function(d) { return k * d.r * 2; });
 
   t.selectAll("text")
       .attr("x", function(d) { return x(d.x); })
